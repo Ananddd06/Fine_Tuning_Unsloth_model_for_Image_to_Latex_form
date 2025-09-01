@@ -6,12 +6,13 @@ This repository demonstrates how to **fine-tune Unsloth 4-bit quantized Vision-L
 
 ## 🚀 Models Used
 
+```
 fourbit_models = [
 "unsloth/Llama-3.2-11B-Vision-Instruct-bnb-4bit",
 "unsloth/Qwen2-VL-7B-Instruct-bnb-4bit"
 ]
 
-`````
+```
 
 These are 4-bit quantized models, chosen for memory-efficient fine-tuning.
 
@@ -54,20 +55,21 @@ These are 4-bit quantized models, chosen for memory-efficient fine-tuning.
 
 We use the Unsloth LaTeX OCR dataset:
 
-````python
+```python
 from datasets import load_dataset
 
 dataset = load_dataset("unsloth/LaTeX_OCR", split="train")
-
+```
 
 This dataset contains images paired with LaTeX expressions, used for supervised fine-tuning.
 
------
+---
 
 ## 🏋️ Fine-Tuning Script
 
 The fine-tuning process is managed by the `SFTTrainer`.
 
+```python
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
@@ -95,12 +97,16 @@ trainer = SFTTrainer(
         max_seq_length = 2048,
     ),
 )
------
+
+```
+
+---
 
 ## 🔊 Inference with Streaming
 
 This streams generated LaTeX tokens as they are decoded.
 
+```python
 from transformers import TextStreamer
 
 Text_streamer = TextStreamer(tokenizer, skip_prompt=True)
@@ -114,13 +120,15 @@ _ = model.generate(
     min_p=0.1
 )
 
------
+```
+
+---
 
 ## ✅ Summary
 
 With this setup, you can fine-tune large vision-language models on LaTeX OCR tasks efficiently on limited GPU memory. 🚀
 
------
+---
 
 ## 🛠️ Setup & Installation
 
@@ -132,7 +140,7 @@ Ensure you have a compatible NVIDIA GPU and the correct CUDA toolkit installed. 
 
 ```bash
 wget -qO- [https://raw.githubusercontent.com/unslothai/unsloth/main/unsloth/_auto_install.py](https://raw.githubusercontent.com/unslothai/unsloth/main/unsloth/_auto_install.py) | python -
-`````
+```
 
 ### Step 2: Install Core Dependencies
 
@@ -144,7 +152,3 @@ pip install --no-deps trl peft accelerate bitsandbytes xformers==0.0.29.post3 da
 ```
 
 **Note:** `unsloth` and `unsloth_zoo` often have specific dependencies and version requirements. The command above is a common starting point, but you may need to adjust based on the specific versions of PyTorch and CUDA you are using. Refer to the official Unsloth documentation for the most accurate installation commands for your setup.
-
-```
-
-```
