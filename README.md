@@ -1,4 +1,3 @@
-```markdown
 # 🧑‍💻 Fine-Tuning Unsloth Models for Image ➝ LaTeX
 
 This repository demonstrates how to **fine-tune Unsloth 4-bit quantized Vision-Language Models (VLMs)** for **Image-to-LaTeX conversion**. The setup ensures **memory efficiency**, **parameter-efficient fine-tuning (PEFT)**, and **fast training**.
@@ -11,7 +10,8 @@ fourbit_models = [
 "unsloth/Llama-3.2-11B-Vision-Instruct-bnb-4bit",
 "unsloth/Qwen2-VL-7B-Instruct-bnb-4bit"
 ]
-```
+
+`````
 
 These are 4-bit quantized models, chosen for memory-efficient fine-tuning.
 
@@ -132,7 +132,7 @@ Ensure you have a compatible NVIDIA GPU and the correct CUDA toolkit installed. 
 
 ```bash
 wget -qO- [https://raw.githubusercontent.com/unslothai/unsloth/main/unsloth/_auto_install.py](https://raw.githubusercontent.com/unslothai/unsloth/main/unsloth/_auto_install.py) | python -
-````
+`````
 
 ### Step 2: Install Core Dependencies
 
